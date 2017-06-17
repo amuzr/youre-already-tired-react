@@ -1,12 +1,14 @@
 import React, { Component, Children, cloneElement } from 'react';
+import { connect } from 'react-redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-import Sidebar from './sidebar';
+import SideBar from './sidebar';
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
   }
@@ -17,11 +19,14 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
-        <Sidebar />
-        <hr />
-        {Children.map(this.props.children, (child) => cloneElement(child, {}))}
-      </div>
+      <MuiThemeProvider>
+        <div>
+          <SideBar />
+          {Children.map(this.props.children, (child) => cloneElement(child, {}))}
+        </div>
+      </MuiThemeProvider>
     );
   }
 }
+
+export default connect()(App);

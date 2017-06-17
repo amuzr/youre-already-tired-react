@@ -1,17 +1,33 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { Drawer, MenuItem } from 'material-ui';
 
-export default class Sidebar extends Component {
+
+
+class SideBar extends Component {
   constructor(props) {
     super(props);
   }
 
   render() {
+    const {open} = this.props;
     return (
-      <ul>
-        <li><Link to="/">Main</Link></li>
-        <li><Link to="/chart">Chart</Link></li>
-      </ul>
+      <Drawer docked={false} open={open}>
+        <MenuItem><Link to="/">Home</Link></MenuItem>
+        <MenuItem><Link to="/chart">Chart</Link></MenuItem>
+      </Drawer>
     );
   }
 }
+
+
+const drawerStateToProps = (state) => {
+  return {
+    open: state.open
+  }
+}
+
+export default connect(
+
+)(SideBar);
