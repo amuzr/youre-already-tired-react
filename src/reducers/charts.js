@@ -3,11 +3,9 @@ import {
   FETCH_CHART,
   FETCH_CHARTS,
   FETCH_CHARTS_PERIOD
-} from '../actions/index';
+} from '../actions';
 
-const INITIAL_STATE = { all: {}, chart: {}, period: {}};
-
-export default function (state = INITIAL_STATE, action) {
+export default function (state = { all: {}, chart: {}, period: {}}, action) {
   switch (action.type) {
     case resolve(FETCH_CHART): {
       return state;
@@ -17,8 +15,16 @@ export default function (state = INITIAL_STATE, action) {
       const data = action.data;
       return { ...state, all: data };
     }
+
+    case FETCH_CHARTS_PERIOD: {
+      return state;
+    }
     
     case resolve(FETCH_CHARTS_PERIOD): {
+      return state;
+    }
+
+    case reject(FETCH_CHARTS_PERIOD): {
       return state;
     }
     

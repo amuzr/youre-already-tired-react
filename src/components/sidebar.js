@@ -3,31 +3,33 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Drawer, MenuItem } from 'material-ui';
 
-
+import { openDrawer } from '../actions';
 
 class SideBar extends Component {
-  constructor(props) {
-    super(props);
-  }
-
   render() {
-    const {open} = this.props;
+    const {open, onRequestChange} = this.props;
     return (
-      <Drawer docked={false} open={open}>
-        <MenuItem><Link to="/">Home</Link></MenuItem>
-        <MenuItem><Link to="/chart">Chart</Link></MenuItem>
+      <Drawer docked={false} open={open} onRequestChange={onRequestChange}>
+        <MenuItem>Menu</MenuItem>
+        <Link to="/"><MenuItem>Home</MenuItem></Link>
+        <Link to="/chart"><MenuItem>Chart</MenuItem></Link>
       </Drawer>
     );
   }
 }
 
-
 const drawerStateToProps = (state) => {
+  return state.pages;
+}
+
+const drawerDispatchToProps = (dispatch) => {  
   return {
-    open: state.open
+    onRequestChange(status){
+      dispatch(openDrawer(true));
+    }
   }
 }
 
 export default connect(
-
+  drawerStateToProps,drawerDispatchToProps
 )(SideBar);

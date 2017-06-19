@@ -1,17 +1,16 @@
-import { resolve, reject } from 'redux-simple-promise';
-import {
-  OPEN_DRAWER
-} from '../actions/index';
+import { OPEN_DRAWER } from '../actions';
 
-const INITIAL_STATE = { open : false };
-
-export default function (state = INITIAL_STATE, action) {
+export default function (state = {open:false}, action) {
   switch (action.type) {
-    case resolve(OPEN_DRAWER): {
-      state.open = !state.open;
-      return state;
+    case OPEN_DRAWER: {
+      if(state.open !== action.open) {
+        return state;
+      }
+      return Object.assign({},state,{
+        open : !action.open
+      });
     }
-    
+
     default:
       return state;
   }
