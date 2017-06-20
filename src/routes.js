@@ -2,8 +2,8 @@ import React from 'react';
 import { Route } from 'react-router-dom';
 
 import App from './components/app';
-import Main from './pages/Main';
-import Chart from './pages/Chart';
+import Main from './containers/Main';
+import Chart from './containers/Chart';
 
 export default (
   <App>

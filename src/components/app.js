@@ -9,7 +9,7 @@ import injectTapEventPlugin from 'react-tap-event-plugin';
 
 injectTapEventPlugin();
 
-class App extends Component {
+ class App extends Component {
   render() {
     return (
       <MuiThemeProvider>
@@ -23,4 +23,4 @@ class App extends Component {
   }
 }
 
-export default connect()(App);
+export default App
