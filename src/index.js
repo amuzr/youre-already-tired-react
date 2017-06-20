@@ -11,8 +11,8 @@ import './index.css';
 import reducers from "./reducers";
 
 import App from './components/app';
-import Main from './pages/Main';
-import Chart from './pages/Chart';
+import Main from './containers/Main';
+import Chart from './containers/Chart';
 
 const promiseMiddleware = promise();
 const loggerMiddleware = createLogger();

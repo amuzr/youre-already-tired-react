@@ -19,8 +19,8 @@ class SideBar extends Component {
 }
 
 const drawerStateToProps = (state) => {
-  const { pages } = state;
-  return pages;
+  const { main } = state;
+  return main;
 }
 
 const drawerDispatchToProps = (dispatch) => {  

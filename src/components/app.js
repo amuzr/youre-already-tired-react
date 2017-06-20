@@ -1,5 +1,4 @@
 import React, { Component, Children, cloneElement } from 'react';
-import { connect } from 'react-redux';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import Header from './header';
