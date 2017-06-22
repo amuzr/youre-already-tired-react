@@ -1,33 +1,43 @@
-import { resolve, reject } from 'redux-simple-promise';
 import {
-  FETCH_CHART,
-  FETCH_CHARTS,
+  FETCH_DATA,
   FETCH_CHARTS_PERIOD
 } from '../actions';
 
-export default function (state = { all: {}, chart: {}, period: {}}, action) {
+export default function (state = {
+  isFetching: false,
+  didInvalidatE: false,
+  payload: {},
+  period: {}
+}, action) {
   switch (action.type) {
-    case resolve(FETCH_CHART): {
-      return state;
+    case `${FETCH_DATA}_PENDING`: {
+      return Object.assign({}, state, {
+        isFetching: true,
+        didInvalidate: false
+      });
     }
     
-    case resolve(FETCH_CHARTS): {
-      const data = action.data;
-      return { ...state, all: data };
+    case `${FETCH_DATA}_FULFILLED`: {
+      return Object.assign({}, state, {
+        isFetching: false,
+        didInvalidate: false,
+        payload: action.payload,
+        lastUpdated: action.receivedAt
+      });
+    }
+
+    case `${FETCH_DATA}_REJECTED`: {
+      return Object.assign({}, state, {
+        didInvalidate: true
+      });
     }
 
     case FETCH_CHARTS_PERIOD: {
-      return state;
-    }
-    
-    case resolve(FETCH_CHARTS_PERIOD): {
-      return state;
+      return Object.assign({}, state, {
+        period : action.period
+      });
     }
 
-    case reject(FETCH_CHARTS_PERIOD): {
-      return state;
-    }
-    
     default:
       return state;
   }

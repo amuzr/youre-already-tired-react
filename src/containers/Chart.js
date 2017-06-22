@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import BillboardChart from '../components/billboardChart'
 
-export default class Chart extends Component {
+import { fetchActionData } from '../actions';
+
+class Chart extends Component {
+  componentDidMount() {
+    if(!this.props.isInit) this.props.init();
+  }
+
   render() {
+    const { payload, period } = this.props;
     const config = {
        data: {
         columns: [
@@ -19,3 +27,18 @@ export default class Chart extends Component {
     );
   }
 }
+
+const chartStateToProps = (state) => {
+  const { charts } = state;
+  return charts;
+}
+
+const chartDispatchToProps = (dispatch) => {  
+  return dispatch => ({
+    init: () => dispatch(fetchActionData())
+  })
+}
+
+export default connect(
+  chartStateToProps,chartDispatchToProps
+)(Chart);
