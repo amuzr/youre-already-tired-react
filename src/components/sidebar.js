@@ -11,8 +11,8 @@ class SideBar extends Component {
     return (
       <Drawer docked={false} open={open} onRequestChange={onRequestChange}>
         <MenuItem>Menu</MenuItem>
-        <Link to="/"><MenuItem>Home</MenuItem></Link>
-        <Link to="/chart"><MenuItem>Chart</MenuItem></Link>
+        <Link to="./"><MenuItem>Home</MenuItem></Link>
+        <Link to="./chart"><MenuItem>Chart</MenuItem></Link>
       </Drawer>
     );
   }

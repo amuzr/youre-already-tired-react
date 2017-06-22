@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://amuzr.github.io/youre-already-tired-react",
   "dependencies": {
+    "billboard.js": "^1.0.0",
     "history": "^4.6.2",
     "lodash": "^4.17.4",
     "material-ui": "^0.18.3",
