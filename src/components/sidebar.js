@@ -17,12 +17,12 @@ class SideBar extends Component {
 
     return (
       <Drawer docked={false} open={open} onRequestChange={onRequestChange}>
-        <Link style={linkStyle} to="./"><MenuItem style={sideTitleStyle}>You're already tired</MenuItem></Link>
-        <MenuItem>Introduce</MenuItem>
-        <Link style={linkStyle} to="./chart"><MenuItem >Chart</MenuItem></Link>
+        <Link style={linkStyle} to="/" onClick={onRequestChange}><MenuItem style={sideTitleStyle}>You're already tired</MenuItem></Link>
+        <Link style={linkStyle} to="/introduce" onClick={onRequestChange}><MenuItem >Introduce</MenuItem></Link>
+        <Link style={linkStyle} to="/chart" onClick={onRequestChange}><MenuItem >Chart</MenuItem></Link>
         <Divider />
-        <MenuItem>Slack Bot</MenuItem>
-        <MenuItem>Chrome Push</MenuItem>
+        <Link style={linkStyle} to="/slackbot" onClick={onRequestChange}><MenuItem >Slack Bot</MenuItem></Link>
+        <Link style={linkStyle} to="/chromepush" onClick={onRequestChange}><MenuItem >Chrome Push</MenuItem></Link>
         <Divider />
         <MenuItem>Github</MenuItem>
       </Drawer>

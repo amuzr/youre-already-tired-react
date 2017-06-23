@@ -11,7 +11,10 @@ export default function (state = {
   isFetching: false,
   didInvalidatE: false,
   payload: {},
-  period: {}
+  period: {
+    type:'hours',
+    val:1
+  }
 }, action) {
   switch (action.type) {
     case FETCH_DATA: {

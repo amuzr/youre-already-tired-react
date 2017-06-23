@@ -2,7 +2,7 @@
   "name": "youre-already-tired-fe",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://amuzr.github.io/youre-already-tired-react",
+  "homepage": "http://amuzr.me",
   "dependencies": {
     "billboard.js": "^1.0.0",
     "history": "^4.6.2",

@@ -13,6 +13,10 @@ export function openDrawer(open) {
   return {type: OPEN_DRAWER, open};
 }
 
+export function changePeriod(period) {
+  return {type: FETCH_CHART_PERIOD, period}
+}
+
 export function fetchData() {
   return {type: FETCH_DATA };
 }
