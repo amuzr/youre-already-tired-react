@@ -14,6 +14,9 @@ export default class ChromePush extends Component {
           <Divider />
           <p>피곤해질 때 쯤 휴식필요를 알리는 푸시 메세지를 받을 수 있습니다.</p>
         </div>
+        <Paper style={{margin:'0 10px',padding:'10px',textAlign:'center'}}>
+          <img src="/chromepush.png" style={{width:'100%'}} />
+        </Paper>
       </div>
     )
   }

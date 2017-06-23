@@ -14,6 +14,9 @@ export default class SlackBot extends Component {
           <Divider />
           <p>슬랙을 통해 현재의 피로도를 체크할 수 있습니다.</p>
         </div>
+        <Paper style={{margin:'0 10px',padding:'10px',textAlign:'center'}}>
+          <img src="/slack.png" style={{width:'50%'}} />
+        </Paper>
       </div>
     );
   }
