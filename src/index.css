@@ -1,3 +1,4 @@
 @import '~billboard.js/dist/billboard.min.css';
 
 body {margin:0;padding:0;}
+pre {line-height:100%;letter-spacing:0;font-family:'Courier New';text-align:center}
