@@ -26,6 +26,12 @@ class BillboardChart extends Component {
     this.renderChart(this.props.config);
   }
 
+  componentWillReceiveProps(nextProps) { 
+    if(JSON.stringify(this.props.config) !== JSON.stringify(nextProps.confg)) {
+      this.renderChart(nextProps.config);
+    }
+  }
+
   componentWillUnmount() {
     this.chart.destroy();
   }

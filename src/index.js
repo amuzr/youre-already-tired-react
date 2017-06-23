@@ -8,16 +8,12 @@ import { createEpicMiddleware } from 'redux-observable'
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-// import promise from 'redux-simple-promise';
-// import reducers from "./reducers";
-
-import ducks from "./redux";
+import rootEpic from './epics';
+import rootReducer from './reducers';
 
 import App from './components/app';
 import Main from './containers/Main';
 import Chart from './containers/Chart';
-
-const { rootEpic, rootReducer } = ducks;
 
 const epicMiddleware = createEpicMiddleware(rootEpic);
 const loggerMiddleware = createLogger();

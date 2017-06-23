@@ -1,8 +1,8 @@
 import { combineReducers } from "redux";
 import main from "./main";
-import charts from "./charts";
+import chart from "./chart";
 
 export default combineReducers({
   main,
-  charts
+  chart
 });

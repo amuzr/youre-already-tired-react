@@ -1,7 +1,11 @@
 import {
   FETCH_DATA,
-  FETCH_CHARTS_PERIOD
-} from '../actions';
+  FETCH_DATA_SUCCESS,
+  FETCH_DATA_FAILURE,
+  FETCH_DATA_CANCEL,
+  CANCEL_FETCH,
+  FETCH_CHART_PERIOD
+} from '../actions'
 
 export default function (state = {
   isFetching: false,
@@ -10,14 +14,14 @@ export default function (state = {
   period: {}
 }, action) {
   switch (action.type) {
-    case `${FETCH_DATA}_PENDING`: {
+    case FETCH_DATA: {
       return Object.assign({}, state, {
         isFetching: true,
         didInvalidate: false
       });
     }
     
-    case `${FETCH_DATA}_FULFILLED`: {
+    case FETCH_DATA_SUCCESS: {
       return Object.assign({}, state, {
         isFetching: false,
         didInvalidate: false,
@@ -26,13 +30,13 @@ export default function (state = {
       });
     }
 
-    case `${FETCH_DATA}_REJECTED`: {
+    case FETCH_DATA_FAILURE: {
       return Object.assign({}, state, {
         didInvalidate: true
       });
     }
 
-    case FETCH_CHARTS_PERIOD: {
+    case FETCH_CHART_PERIOD: {
       return Object.assign({}, state, {
         period : action.period
       });

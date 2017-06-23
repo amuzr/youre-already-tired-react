@@ -2,22 +2,17 @@ import 'isomorphic-fetch';
 
 export const OPEN_DRAWER = 'OPEN_DRAWER';
 export const FETCH_DATA = 'FETCH_DATA';
-export const FETCH_CHARTS_PERIOD = 'FETCH_CHARTS_PERIOD';
+export const FETCH_DATA_SUCCESS = 'FETCH_DATA_SUCCESS';
+export const FETCH_DATA_FAILURE = 'FETCH_DATA_FAILURE';
+export const FETCH_DATA_CANCEL = 'FETCH_DATA_CANCEL';
+export const FETCH_CHART_PERIOD = 'FETCH_CHART_PERIOD';
+
+export const CANCEL_FETCH = 'CANCEL_FETCH';
 
 export function openDrawer(open) {
   return {type: OPEN_DRAWER, open};
 }
 
-export function fetchActionData(data) {
-  return {
-    type: FETCH_DATA,
-    payload: new Promise(resolve => {
-      setTimeout(() => fetch('http://13.124.57.236/api',{
-        mode: 'no-cors'
-      }).then(response => {
-        resolve(response.json());
-      }), 1000)
-    }),
-    receivedAt: Date.now()
-  };
+export function fetchData() {
+  return {type: FETCH_DATA };
 }

@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import BillboardChart from '../components/billboardChart'
+import { Observable } from 'rxjs/Observable';
+import moment from 'moment';
+import _ from 'lodash';
 
-import { fetchActionData } from '../actions';
+import { fetchData } from '../actions';
 
 class Chart extends Component {
   componentDidMount() {
@@ -11,12 +14,23 @@ class Chart extends Component {
 
   render() {
     const { payload, period } = this.props;
+    const series = {};
+    _.forEach(payload.data,function(row){
+      if(!series[row.action_type]) series[row.action_type] = [];
+      series[row.action_type].push(row.cnt);
+    });
+
+    const data = _.map(series,function(row,key){
+      return [key, ...row];
+    });
+
+    let groupedResults = _.groupBy(payload.data, (result) => moment(result.current_dt).startOf('isoWeek'));
+
+    console.log('data : ',groupedResults);
+
     const config = {
        data: {
-        columns: [
-            ["data1", 30, 200, 100, 170, 150, 250],
-            ["data2", 130, 100, 140, 35, 110, 50]
-        ]
+        columns: data
       }
     };
 
@@ -29,13 +43,13 @@ class Chart extends Component {
 }
 
 const chartStateToProps = (state) => {
-  const { charts } = state;
-  return charts;
+  const { chart } = state;
+  return chart;
 }
 
 const chartDispatchToProps = (dispatch) => {  
   return dispatch => ({
-    init: () => dispatch(fetchActionData())
+    init: () => dispatch(fetchData())
   })
 }
 
